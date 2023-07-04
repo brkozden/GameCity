@@ -1,0 +1,70 @@
+﻿@using ETicaretMVC.ViewModels;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_contactLayout.cshtml";
+}
+@model ContactMessageViewModel
+
+@{
+    if (ViewBag.Message == "sent")
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Mesaj Başarıyla Gönderildi</strong> En kısa sürede sizinle irtibata geçeceğiz. İyi günler dileriz.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}
+
+<div class="contact-bottom">
+    <div class="container">
+        <div class="contact-title"><h2>Bize Ulaşın</h2></div>
+        <div class="contact-elements">
+            <form class="contact-form" asp-controller="Contact" asp-action="index" method="post">
+                <div>
+                    <label>İsim Soyisim <span>*</span></label>
+                    <input type="text" asp-for="NameSurname" required />
+                </div>
+                <div>
+                    <label>E-Posta <span>*</span></label>
+                    <input type="email" asp-for="Email" required />
+                </div>
+                <div>
+                    <label>Konu <span>*</span></label>
+                    <input type="text" asp-for="Subject" required />
+                </div>
+                <div>
+                    <label>Mesajınız <span>*</span></label>
+                    <textarea asp-for="Message" required></textarea>
+                </div>
+                <button class="btn btn-sm btn-primary form-button">Gönder</button>
+            </form>
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <div class="contact-info-text">
+                        <h2>İletişim Adresleri</h2>
+                        <p>Bize aşağıdaki kanallardan ulaşabilirsiniz</p>
+                        <a href="tel:555 555 5555">Telefon: 555 555 5555</a>
+                        <a href="mailto:gamecity@gmail.com">E-mail: gamecity@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <ul class="social-list">
+                        <li class="social-item">
+                            <a href="#">
+                                <i class="fa-brands fa-instagram instagram"></i>
+                            </a>
+                        </li>
+                        <li class="social-item">
+                            <a href="#">
+                                <i class="fa-brands fa-whatsapp whatsapp"></i>
+                            </a>
+                        </li>
+                        <li class="social-item">
+                            <a href="#"><i class="fa-brands fa-twitter twitter"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

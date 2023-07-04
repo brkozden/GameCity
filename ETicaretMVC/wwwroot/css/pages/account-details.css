@@ -1,0 +1,182 @@
+.account-dashboard-area {
+  padding: 40px 0;
+}
+.account-dashboard-area .dashboard-author .media {
+  margin-bottom: 25px;
+}
+.account-dashboard-area .dashboard-author .thumbnail {
+  margin-bottom: 15px;
+}
+.account-dashboard-area .dashboard-author .thumbnail img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+.account-dashboard-area .dashboard-author .media-body h5 {
+  font-weight: 700;
+}
+.account-dashboard-area .dashboard-author .row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+.account-dashboard-area .dashboard-author .row .aside-dashboard {
+  border: 1px solid #cbd3d9;
+  padding: 40px 35px 30px;
+  border-radius: 6px;
+}
+.account-dashboard-area .dashboard-author .row .aside-dashboard .tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 0;
+  list-style: none;
+  align-items: start;
+}
+.account-dashboard-area
+  .dashboard-author
+  .aside-dashboard
+  .tab-list
+  .nav_link
+  i {
+  position: absolute;
+  top: 12px;
+  left: 24px;
+  font-size: 18px;
+}
+.account-dashboard-area .dashboard-author .aside-dashboard .tab-list .nav_link {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  align-items: center;
+  font-weight: 500;
+  color: #777777;
+  font-size: 14px;
+  position: relative;
+  border-radius: 6px;
+  padding: 9px 10px 9px 55px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+  border: none;
+  width: 100%;
+}
+
+.aside-dashboard .nav_link.active,
+.aside-dashboard .nav_link:hover {
+  background-color: #f6f7fb;
+  color: #3577f0 !important;
+}
+
+/* Content start*/
+
+.tab-content > .tab-pane {
+  display: none;
+}
+.tab-content > .active {
+  display: contents;
+}
+.dashboard-overview .welcome-text {
+  color: black;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+.dashboard-overview .welcome-text a {
+  color: #e76458;
+  transition: 0.3s;
+}
+#nav-orders .table-responsive {
+  overflow-x: auto;
+}
+.dashboard-order .table thead {
+  background-color: #f6f7fb;
+}
+.dashboard-order .table thead th {
+  border: none;
+  padding: 18px 20px;
+  vertical-align: middle;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.dashboard-order .table thead th:first-child {
+  border-radius: 6px 0 0 6px;
+}
+.dashboard-order .table thead th:last-child {
+  border-radius: 0 6px 6px 0;
+  padding-right: 30px;
+  text-align: right;
+}
+.dashboard-order .table tbody tr td:last-child,
+.axil-dashboard-order .table tbody tr th:last-child {
+  text-align: right;
+}
+.dashboard-order .table tbody tr td,
+.axil-dashboard-order .table tbody tr th {
+  padding: 20px 20px;
+  vertical-align: middle;
+  font-weight: 500;
+  font-size: 14px;
+  color: #292930;
+  border-top: none;
+  border-bottom: 2px solid #f6f7fb;
+}
+.dashboard-order .table tbody tr th {
+  color: #e76458;
+  vertical-align: middle;
+  text-align: center;
+}
+.dashboard-order .table tbody tr td {
+  min-width: 150px;
+}
+.axil-dashboard-order .table tbody .view-btn {
+  padding: 9px 20px;
+  border: 1px solid #777777;
+  background-color: rgba(0, 0, 0, 0);
+  color: #27272e;
+}
+
+.dashboard-address .address-header {
+  border-bottom: 1px solid #cbd3d9;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.dashboard-address ul li {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #292930;
+}
+
+.dashboard-account .account-details-form .form-group {
+  margin-bottom: 30px;
+  position: relative;
+}
+.dashboard-account .account-details-form .form-group label {
+  position: absolute;
+  top: -11px;
+  left: 20px;
+  pointer-events: none;
+  z-index: 4;
+  background: #fff;
+  padding: 0 10px;
+}
+.dashboard-account .form-group .form-control {
+  height: 60px;
+  padding: 10px 30px;
+  border-color: #cbd3d9;
+  color: #777777;
+}
+.dashboard-account .account-details-form .title {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #cbd3d9;
+  padding-bottom: 10px;
+}
+/* Content end */
+.modal-search .result-item .search-info h4 {
+  font-size: 14px;
+}

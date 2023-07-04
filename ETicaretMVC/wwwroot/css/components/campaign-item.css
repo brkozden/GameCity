@@ -1,0 +1,39 @@
+.campaigns .campaign-item {
+  background-image: url(../../img/campaigns/msi1.jpg);
+  padding: 70px 35px;
+  background-size: cover;
+  background-position: center;
+  flex: 1;
+  color: white;
+}
+.campaigns .campaign-item .campaign-title {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 30px;
+}
+.campaigns .campaign-item .campaign-desc {
+  margin: 40px 0;
+  font-size: 14px;
+}
+.campaigns-wrapper:nth-child(1) .campaign-item:nth-child(1) {
+  background-image: url(../../img/campaigns/msi1.jpg);
+}
+
+.campaigns-wrapper:nth-child(1) .campaign-item:nth-child(2) {
+  background-image: url(../../img/campaigns/Cooler-Master-Kasa.jpg);
+}
+.campaigns-wrapper:nth-child(2) .campaign-item:nth-child(1) {
+  background-image: url(../../img/campaigns/Zotac-Graphic-Card.jpg);
+  flex: 5;
+}
+.campaigns-wrapper:nth-child(2) .campaign-item:nth-child(2) {
+  background-image: url(../../img/campaigns/G-Skill-Ram.png);
+  flex: 3;
+}
+
+@media (max-width: 768px) {
+  .campaigns .campaign-item {
+    width: 100%;
+    flex: unset !important;
+  }
+}

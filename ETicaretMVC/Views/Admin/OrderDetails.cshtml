@@ -1,0 +1,162 @@
+﻿@using ETicaretMVC.ViewModels;
+@{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+@model BillViewModel
+
+    <aside id="side-menu">
+        <div class="top">
+            <div class="logo">
+            <a asp-controller="Home" asp-action="Index">
+                <h2>GAME<span class="danger">CITY</span></h2>
+            </a>
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp"> close </span>
+            </div>
+        </div>
+        <div class="sidebar">
+            <a asp-controller="Admin" asp-action="index"  id="dashboard-main-btn">
+                <span class="material-icons-sharp"> grid_view </span>
+                <h3>Gösterge Paneli</h3>
+            </a>
+
+        <a asp-controller="Admin" asp-action="OrdersAdmin" class="active" id="ordersBtn">
+                <span class="material-icons-sharp"> receipt_long </span>
+                <h3>Siparişler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="Products" id="allProductBtn">
+                <span class="material-icons-sharp"> inventory </span>
+                <h3>Ürünler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="ProductAdd" id="addProductBtn">
+                <span class="material-icons-sharp"> add </span>
+                <h3>Ürün Ekle</h3>
+            </a>
+            <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <span class="material-icons-sharp"> logout </span>
+                <h3>Çıkış Yap</h3>
+            </a>
+        </div>
+    </aside>
+    <!--  ASIDE END -->
+    <div class="right">
+        <div class="topbar">
+            <button id="menu-btn">
+                <span class="material-icons-sharp"> menu </span>
+            </button>
+
+            <div class="profile">
+                <div class="info">
+
+                    <b class="text-muted">Admin</b>
+                </div>
+                <div class="profile-photo">
+                    <img src="@Url.Content("~/img/1.png")" style="width: 100%" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <ul class="dashboard-list">
+
+<li class="orders-details-item active">
+    <div class="breadcrumb-wrapper">
+        <div>
+            <h1>Sipariş Detayı</h1>
+            <p class="breadcrumbs">
+                <span><a asp-controller="Admin" asp-action="Index" class="primary breadcrumb-dashboard-btn">Gösterge Paneli</a></span>
+                <span>></span>
+                <span>Siparişler</span>
+            </p>
+        </div>
+
+    </div>
+    <div class="wrapper">
+        <div class="orders-details-wrapper">
+            <div class="orders-details">
+
+                <div class="orders-details-header">
+                    <h2>Sipariş Detayı</h2>
+                    <h3>Sipariş ID: <span class="danger header-order-Id">#@Model.Id</span></h3>
+
+                </div>
+                <div class="orders-details-body">
+                    <div class="row">
+                        <div class="col-1">
+                            <div class="name-surname">
+                                <div class="info-title"><strong>Ad Soyad</strong></div>
+                                <div class="info-content">
+                                    <p class="customer-name-surname">@Model.Name @Model.Surname</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="adress">
+                                <div class="info-title"><strong>Adres</strong></div>
+                                <div class="info-content">
+                                    <p class="customer-adres">@Model.Address</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="payment-method">
+                                <div class="info-title"><strong>Ödeme Yöntemi</strong></div>
+                                <div class="info-content">
+                                    <p class="customer-payment-method">@Model.PaymentMethod</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="order-date">
+                                <div class="info-title"><strong>Sipariş Tarihi</strong></div>
+                                <div class="info-content">
+                                    <p class="customer-order-date">@Model.Date.ToShortDateString()</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="col-2">
+                            <div class="product-summary-title"><h2>Sipariş Özeti</h2></div>
+                            <div class="product-summary-body">
+                                <table class="product-summary-table">
+                                    <thead>
+                                        <tr>
+                                            <td>#</td>
+                                            <td></td>
+                                            <td>Ürün</td>
+                                            <td>Toplam</td>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                                @foreach (var item in ViewBag.Join as List<BillOrderProductViewModel>)
+                                                {
+                                                    <tr>
+                                                        <td>@item.ProductId</td>
+                                                        <td><img src="@Url.Content("~/img/"+item.ImagePath)" alt=""></td>
+                                                        <td>@item.ProductName.Substring(0,30) </td>
+                                                        <td>@item.Price TL</td>
+
+                                                    </tr>
+                                                }
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row3">
+                                <h2>Toplam: <span class=" success " id="total">@ViewBag.TotalPrice TL</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+        </ul>
+    </div>

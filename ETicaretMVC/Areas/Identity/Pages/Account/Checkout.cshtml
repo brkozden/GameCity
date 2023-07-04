@@ -1,0 +1,146 @@
+﻿@page
+@using ETicaretMVC.ViewModels;
+@model ETicaretMVC.Areas.Identity.Pages.Account.CheckoutModel
+@{
+    Layout = "~/Views/Shared/_checkoutLayout.cshtml";
+}
+
+<section class="checkout-area">
+    <div class="container">
+        <h2 style="text-align:center;">@TempData["Success"]</h2>
+        <form asp-area="Identity" asp-page="/Account/Checkout">
+            <div class="row">
+                <div class="col-lg-6">
+                
+                    <div class="checkout-billing">
+                        <h4 class="title mb--40">Fatura Detayı</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Adınız <span>*</span></label>
+                                    <input type="text" asp-for="Input.Name" id="first-name" required="required"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Soyadınız <span>*</span></label>
+                                    <input type="text" asp-for="Input.Surname" id="surname" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Telefon <span>*</span></label>
+                                    <input type="tel" asp-for="Input.PhoneNumber" id="phone" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label>E-Posta <span>*</span></label>
+                                    <input type="email" asp-for="Input.Email" id="email" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Adres <span>*</span></label>
+                                    <textarea asp-for="Input.Address" rows="3" required="required"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+                <div class="col-lg-6">
+                    <div class="order-summery order-checkout-summery">
+                        <h5 class="title mb--20">Siparişlerin</h5>
+                        <div class="summery-table-wrap">
+                            <table class="table summery-table">
+                                <thead>
+                                    <tr>
+                                        <th>Ürün</th>
+                                        <th>Fiyat</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in TempData["Products"] as List<BasketViewModel>)
+                                    {
+                                        <tr class="order-product">
+                                            <td>
+                                                @item.ProductName.Substring(0,15)..<span class="quantity">x @item.Amount</span>
+                                            </td>
+                                            <td>@item.Price</td>
+                                        </tr>
+                                    }
+                                    
+
+                                    <tr class="order-subtotal">
+                                        <td>Toplam</td>
+                                        <td>@TempData["TotalPrice"] ₺</td>
+                                    </tr>
+                                    
+                                    @{if ((decimal)TempData["TotalPrice"] > 300)
+                                        {
+                                            <tr class="order-shipping">
+                                                <td>Kargo</td>
+                                                <td>Ücretsiz</td>
+                                            </tr>
+                                            <tr class="order-total">
+                                                <td>Toplam</td>
+                                                <td class="order-total amount">@TempData["TotalPrice"] ₺</td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr class="order-shipping">
+                                                <td>Kargo</td>
+                                                <td>20 ₺</td>
+                                            </tr>
+                                            <tr class="order-total">
+                                                <td>Toplam</td>
+                                                <td class="order-total amount">@((decimal)TempData["TotalPrice"] + 20) ₺</td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="order-payment-method">
+                            <div class="single-payment">
+                                <div class="input-group">
+                                    <input type="radio" value="Banka Transferi"
+                                           id="radio-bank-transfer"
+                                           name="payment" />
+                                    <label for="radio-bank-transfer">Banka Transferi</label>
+                                </div>
+                                <p>
+                                    Ödemenizi doğrudan banka hesabımıza yapın. Lütfen ödeme
+                                    referansı olarak Sipariş Kimliğinizi kullanın. Paranız
+                                    hesabımıza geçene kadar siparişiniz kargoya
+                                    verilmeyecektir.
+                                </p>
+                            </div>
+                            <div class="single-payment">
+                                <div class="input-group">
+                                    <input type="radio" value="Kapıda Ödeme"
+                                           id="radio-delivery-cash"
+                                           name="payment" />
+                                    <label for="radio-delivery-cash">Kapıda Ödeme</label>
+                                </div>
+                                <p>Teslimatta nakit olarak ödeyin.</p>
+                            </div>
+                            <div class="single-payment">
+                                <div class="input-group">
+                                    <input type="radio" value="Kredi Kartı İle Ödeme"
+                                           id="radio-credit-card"
+                                           name="payment" />
+                                    <label for="radio-credit-card">Kredi Kartı İle Ödeme</label>
+                                </div>
+                                <p>Ödemenizi kredi kartı kullanarak yapın.</p>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary checkout-btn">
+                            Ödemeyi Tamamla
+                        </button>
+                    </div>
+                </div>
+            </div>
+</form>
+    </div>
+</section>

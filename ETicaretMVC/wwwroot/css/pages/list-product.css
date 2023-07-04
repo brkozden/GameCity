@@ -1,0 +1,61 @@
+.wrapper {
+  padding: 1rem 2rem;
+}
+.all-Products {
+  padding: 1.5rem;
+
+  background: var(--color-white);
+
+  margin-bottom: 0.7rem;
+  padding: 1rem var(--card-padding);
+  border-radius: var(--border-radius-3);
+  box-shadow: var(--box-shadow);
+  transition: all 300ms ease;
+
+  color: var(--color-dark);
+}
+.all-Products:hover {
+  box-shadow: none;
+}
+.all-Products .responsive-all-products {
+  overflow-x: auto;
+  width: 100%;
+}
+.all-Products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.all-Products-table thead {
+  font-size: 1.2rem;
+}
+.all-Products-table tbody tr {
+  border-bottom: 2px solid var(--color-light);
+}
+.all-Products-table th,
+.all-Products-table td {
+  padding: 1.4rem;
+}
+.all-Products-table tbody tr td img {
+  width: 3rem;
+}
+.all-Products-table thead {
+  border-bottom: 3px solid var(--color-light);
+}
+.all-Products-table tbody tr th a.delete {
+  color: var(--color-primary);
+}
+.all-Products-table tbody tr th a.delete span {
+  font-size: 2.3rem;
+}
+.all-Products-table tbody tr th a.delete:hover span {
+  transform: scale(1.2);
+}
+.all-Products-table tbody {
+  font-size: 1.1rem;
+}
+.all-product-item {
+  display: none;
+}
+.all-product-item.active {
+  display: inline;
+}

@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ETicaretMVC.Areas.Identity.Data
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li><a id="manage" class="header-accounts" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Panel</a></li>
+    <li><a id="manage" class="header-accounts" asp-area="Identity" asp-page="/Account/Favorites" title="Manage">Favori Listem</a></li>
+    <li><a id="manage" class="header-accounts" asp-area="Identity" asp-page="/Account/Manage/AccountInfos" title="Manage">Hesap Bilgileri</a></li>
+    <li><a id="manage" class="header-accounts" asp-area="Identity" asp-page="/Account/Manage/Orders" title="Manage">Geçmiş Siparişlerim</a></li>
+}
+else
+{
+    <li><a id="register" asp-area="Identity" asp-page="/Account/Login" class="header-accounts">Panel</a></li>
+    <li><a id="register" asp-area="Identity" asp-page="/Account/Login" class="header-accounts">Favori Listem</a></li>
+    <li><a id="register" asp-area="Identity" asp-page="/Account/Login" class="header-accounts">Hesap Bilgileri</a></li>
+    <li><a id="register" asp-area="Identity" asp-page="/Account/Login" class="header-accounts">Geçmiş Siparişlerim</a></li>
+}

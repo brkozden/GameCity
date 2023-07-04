@@ -1,0 +1,151 @@
+﻿@page
+@using ETicaretMVC.ViewModels;
+@model ETicaretMVC.Areas.Identity.Pages.Account.BasketModel
+@{
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<section class="cart-page">
+    <div class="container">
+        <div class="cart-page-wrapper">
+
+
+            <form class="cart-form">
+                <div class="free-progress-bar">
+                    <p class="progress-bar-title">
+                        Kargonuzun bedava olması için <strong></strong> TL'lik ürün
+                        daha ekleyin.
+                    </p>
+                    <div class="progress-bar">
+                        <span class="progress"></span>
+                    </div>
+                </div>
+                <div class="shop-table-wrapper">
+                    <table class="shop-table">
+                        <thead>
+                        <th class="product-thumbnail">&nbsp;</th>
+                        <th class="product-thumbnail">&nbsp;</th>
+                        <th class="product-title">Ürün</th>
+                        <th class="product-price">Fiyat</th>
+                        <th class="product-quantity">Adet</th>
+                        <th class="product-subtotal">Toplam</th>
+                        </thead>
+                        <tbody class="cart-wrapper">
+
+                            @foreach (var item in TempData["Products"] as List<BasketViewModel>)
+                            {
+                                <tr class="cart-item">
+                                    <td class="cart-delete"> <a asp-controller="Home" asp-action="RemoveProductFromBasket" asp-route-id="@item.Id"> <i class="bi bi-x"></i> </a> </td>
+                                    <td class="cart-image">
+                                        <img src="@Url.Content("~/img/"+item.ProductImagePath)" alt="" />
+                                    </td>
+                                    @if (item.ProductName.Length>20)
+                                    {
+                                        <td>@item.ProductName.Substring(0,20) ...</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@item.ProductName</td>
+                                    }
+                                    <td>@item.ProductPrice TL</td>
+                                    <td>
+                                        @if (item.Amount==1)
+                                        {
+                                            <span class="decrease-count" >
+                                                <a asp-controller="Home" asp-action="DecreaseAmount" asp-route-id="@item.Id">
+                                                    <i class="bi bi-dash" ></i>
+                                                </a>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="decrease-count ">
+                                                <a asp-controller="Home" asp-action="DecreaseAmount" asp-route-id="@item.Id">
+                                                    <i class="bi bi-dash"></i>
+                                                </a>
+                                            </span>
+                                        }
+                                        @item.Amount
+                                        <span  class="increase-count">
+                                            <a asp-controller="Home" asp-action="IncreaseAmount" asp-route-id="@item.Id">
+                                                <i class="bi bi-plus"></i>
+                                            </a>
+                                            
+                                        </span>
+                                    </td>
+                                    <td>@item.Price</td>
+                                    <td class="cart-look"> <a asp-controller="ProductDetails" asp-action="index" asp-route-id="@item.ProductId"> <i class="bi bi-eye-fill"></i> </a></td>
+                                </tr>
+                            }
+                            
+
+                            
+                        </tbody>
+                    </table>
+                    <div class="action-wrapper">
+                        <div class="update-cart">
+                            <a class="btn btn-secondary" asp-controller="Home" asp-action="Shop" asp-route-page="1">Alışverişe Devam Et</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <div class="cart-collaterals">
+                <div class="cart-totals">
+                    <h2>Sepet Toplamı</h2>
+                    <table>
+                        <tbody>
+                            <tr class="cart-subtotal">
+                                <th>Ürün:</th>
+                                <td><span id="subtotal">@TempData["TotalPrice"] </span>TL</td>
+                            </tr>
+                            <tr>
+                                <th>Kargo:</th>
+                                @if ((decimal)TempData["TotalPrice"] > 300)
+                                {
+                                    <td><span id="subtotal">0.00 </span>TL</td>
+                                }
+                                else if ((decimal)TempData["TotalPrice"] < 1)
+                                {
+                                    <td><span id="subtotal">0.00 </span>TL</td>
+                                }
+                                else
+                                {
+                                    <td><span id="subtotal">20.00 </span>TL</td>
+                                }
+
+
+                            </tr>
+                            <tr>
+                                <th>Toplam:</th>
+                                <td>
+                                @if ((decimal)TempData["TotalPrice"] > 300)
+                                    {
+                                        <span id="total"><strong>@TempData["TotalPrice"] TL</strong></span>
+                                    }
+                                    else if ((decimal)TempData["TotalPrice"] < 1)
+                                    {
+                                        <span id="total"><strong>@TempData["TotalPrice"] TL</strong></span>
+                                    }
+                                    else
+                                    {
+                                        <span id="total"><strong>@((decimal)TempData["TotalPrice"] + 20) TL</strong></span>
+                                    }
+
+                                    
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="checkout">
+                        <a class="btn btn-primary btn-lg" asp-area="Identity" asp-page="/Account/Checkout">
+                            Alışverişi Tamamla
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

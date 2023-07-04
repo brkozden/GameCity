@@ -1,0 +1,38 @@
+.history-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.history-orders-table thead {
+  font-size: 1.2rem;
+}
+.history-orders-table tbody tr {
+  border-bottom: 2px solid var(--color-light);
+}
+.history-orders-table th,
+.history-orders-table td {
+  padding: 1.4rem;
+}
+.history-orders-table tbody tr td img {
+  width: 3rem;
+}
+.history-orders-table thead {
+  border-bottom: 3px solid var(--color-light);
+}
+.history-orders-table tbody tr th a.delete {
+  color: var(--color-primary);
+}
+.history-orders-table tbody tr th a.delete span {
+  font-size: 2.3rem;
+}
+.history-orders-table tbody tr th a.delete:hover span {
+  transform: scale(1.2);
+}
+.history-orders-table tbody {
+  font-size: 1.1rem;
+}
+.history-orders-item {
+  display: none;
+}
+.history-orders-item.active {
+  display: inline;
+}

@@ -1,0 +1,109 @@
+﻿@page
+@model MyAddressModel
+@{
+    ViewData["Title"] = "Manage Email";
+    Layout = "~/Views/Shared/_accountDetailsLayout.cshtml";
+}
+
+<h2 style="text-align:center;">@TempData["Success"]</h2>
+<section class="account-dashboard-area">
+    <div class="container">
+        <div class="account-dashboard-wrapper">
+            <div class="dashboard-author">
+                <div class="media">
+                    <div class="thumbnail">
+                        <img src=@Url.Content("~/img/avatar/2.png") alt="author-name" />
+                    </div>
+                    <div class="media-body">
+                        <h5 class="title">@TempData["Username"]</h5>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-xl-3 col-md-4">
+                        <aside class="aside-dashboard">
+                            <nav class="dashboard-nav">
+                                <div class="nav tab-list" role="tablist">
+                                    <a class="nav-item nav_link @ManageNavPages.IndexNavClass(ViewContext)" asp-page="./Index"
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-th-large"></i>Panel
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.OrdersNavClass(ViewContext)" asp-page="./Orders"
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-shopping-basket"></i>Siparişlerim
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.MyAddressNavClass(ViewContext)" asp-page="./MyAddress" active
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-home"></i>Adresim
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.AccountInfosNavClass(ViewContext)" asp-page="/Account/Manage/AccountInfos"
+                                       data-bs-toggle="tab"
+                                       id="dashboard-btn"
+                                       role="tab"
+                                       aria-selected="true">
+                                        <i class="fas fa-user"></i>Hesap Bilgileri
+                                    </a>
+
+
+                                    <a class="nav-item nav_link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <i class="fas fa-sign-out"></i>Çıkış
+                                    </a>
+                                </div>
+                            </nav>
+                        </aside>
+                    </div>
+                    <div class="col-xl-9 col-md-8">
+                        <div class="tab-content" style="margin-left: 40px">
+                            <div class="tab-pane fade active" id="nav-address" role="tabpanel">
+                                <div class="dashboard-address">
+                                    <div class="row row--30">
+                                        <div class="col-lg-6">
+                                            <div class="address-info mb--40">
+                                                <div class="address-header d-flex align-items-center justify-content-between">
+                                                    <h4 class="title mb-0">Şu anki Adresiniz</h4>
+                                                </div>
+                                                <ul class="address-details">
+                                                    <form>
+                                                        <textarea asp-for="Address" rows="5" style="width:100%" disabled> </textarea>
+
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="address-info">
+                                                <div class="address-header d-flex align-items-center justify-content-between">
+                                                    <h4 class="title mb-0">Adresi Güncelle</h4>
+                                                </div>
+                                                <div class="address-update">
+                                                    <form action="" class="update-address" method="post">
+                                                        <textarea id="update-address" asp-for="Input.Address"
+                                                                  rows="5"
+                                                                  style="width: 100%"
+                                                                  placeholder="Yeni Adresinizi Giriniz"></textarea>
+                                                        <button type="submit" asp-page-handler="ChangeEmail"
+                                                                class="btn btn-secondary"
+                                                                id="update-address-btn">
+                                                            Güncelle
+                                                        </button>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

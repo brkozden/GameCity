@@ -1,0 +1,150 @@
+.checkout-area {
+  padding: 80px 0;
+}
+.checkout-area .checkout-notice {
+  margin-bottom: 40px;
+}
+.checkout-notice .toggle-box {
+  margin-bottom: 20px;
+}
+.checkout-notice .toggle-bar {
+  background-color: #f6f7fb;
+  border-radius: 6px;
+  padding: 17px 30px;
+  color: #777777;
+}
+.checkout-notice .toggle-bar i {
+  margin-right: 8px;
+}
+.checkout-notice .toggle-bar a {
+  font-weight: 500;
+  transition: 0.3s;
+}
+.checkout-notice .toggle-bar a i {
+  color: #777777;
+  font-weight: 800;
+  margin-left: 5px;
+}
+
+.checkout-notice .checkout-login {
+  border: 1px solid #cbd3d9;
+  border-radius: 16px;
+  padding: 30px;
+  display: none;
+}
+
+.checkout-notice .toggle-open {
+  display: block;
+  margin-top: 20px;
+}
+
+.checkout-notice .checkout-login p {
+  margin-bottom: 30px;
+}
+
+.checkout-billing .title {
+  font-weight: 500;
+}
+.form-group {
+  margin-bottom: 30px;
+  position: relative;
+}
+.checkout-billing .form-group label {
+  position: absolute;
+  top: -11px;
+  left: 20px;
+  pointer-events: none;
+  z-index: 4;
+  background: #fff;
+  padding: 0 10px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #777777;
+}
+.checkout-billing .form-group label span {
+  color: #e76458;
+}
+.checkout-billing .form-group input {
+  height: 60px;
+  border-color: #cbd3d9;
+  padding: 0 30px;
+  width: 100%;
+  border-radius: 5px;
+}
+.checkout-billing .form-group textarea {
+  width: 100%;
+  border-radius: 5px;
+}
+.order-summery {
+  background-color: #f9f3f0;
+  border-radius: 6px;
+  padding: 40px;
+}
+.order-summery .title {
+  font-weight: 500;
+}
+.order-summery.order-checkout-summery .summery-table-wrap {
+  background-color: white;
+  border-radius: 6px;
+  padding: 30px;
+  margin-bottom: 45px;
+}
+.order-summery.order-checkout-summery .summery-table tr td {
+  padding: 20px 0 !important;
+}
+.order-summery.order-checkout-summery .summery-table th {
+  font-size: 20px;
+  color: #292930;
+  text-transform: capitalize;
+  padding: 15px 0;
+}
+.order-summery.order-checkout-summery .summery-table th:last-child,
+.order-summery.order-checkout-summery .summery-table td:last-child {
+  text-align: right;
+}
+.order-summery .summery-table tbody {
+  border-top: none !important;
+}
+.order-summery.order-checkout-summery .summery-table tr:last-child td {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.order-summery.order-checkout-summery .order-payment-method .single-payment {
+  border-bottom: 1px solid #cbd3d9;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.order-summery.order-checkout-summery
+  .order-payment-method
+  .single-payment
+  .input-group {
+  margin-bottom: 20px;
+}
+.order-summery.order-checkout-summery
+  .order-payment-method
+  .single-payment
+  .input-group
+  label {
+  font-weight: 500;
+  color: #292930;
+}
+.order-summery.order-checkout-summery .order-payment-method .single-payment p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #777777;
+}
+input[type="checkbox"] ~ label,
+input[type="radio"] ~ label {
+  position: relative;
+  font-size: 16px;
+  line-height: 20px;
+  color: #777777;
+  font-weight: 500;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.order-summery button.checkout-btn {
+  width: 100%;
+}

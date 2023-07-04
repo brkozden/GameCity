@@ -1,0 +1,30 @@
+.campaign-single {
+  background-attachment: fixed;
+  background-image: url(../../img/campaign-single/13th-Gen-Intel-Core-1.jpg);
+  padding: 140px 15px;
+  margin-bottom: 30px;
+}
+.campaign-single .campaign-wrapper {
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.campaign-single .campaign-wrapper h2 {
+  font-size: 40px;
+  backdrop-filter: blur(2px);
+}
+.campaign-single .campaign-wrapper strong {
+  font-size: 60px;
+  font-weight: 600;
+  margin: 20px 0;
+  backdrop-filter: blur(2px);
+}
+.campaign-single .campaign-wrapper span {
+  width: 50px;
+  height: 5px;
+  background: white;
+}
+.campaign-single .campaign-wrapper > a {
+  margin-top: 60px;
+}

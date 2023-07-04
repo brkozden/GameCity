@@ -1,0 +1,118 @@
+﻿@using ETicaretMVC.ViewModels;
+@{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+    <aside id="side-menu">
+        <div class="top">
+            <div class="logo">
+                <a asp-controller="Home" asp-action="Index">
+                <h2>GAME<span class="danger">CITY</span></h2>
+                </a>
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp"> close </span>
+            </div>
+        </div>
+        <div class="sidebar">
+            <a asp-controller="Admin" asp-action="index"  id="dashboard-main-btn">
+                <span class="material-icons-sharp"> grid_view </span>
+                <h3>Gösterge Paneli</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="OrdersAdmin" class="active" id="ordersBtn">
+                <span class="material-icons-sharp"> receipt_long </span>
+                <h3>Siparişler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="Products" id="allProductBtn">
+                <span class="material-icons-sharp"> inventory </span>
+                <h3>Ürünler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="ProductAdd" id="addProductBtn">
+                <span class="material-icons-sharp"> add </span>
+                <h3>Ürün Ekle</h3>
+            </a>
+            <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <span class="material-icons-sharp"> logout </span>
+                <h3>Çıkış Yap</h3>
+            </a>
+        </div>
+    </aside>
+    <!--  ASIDE END -->
+    <div class="right">
+        <div class="topbar">
+            <button id="menu-btn">
+                <span class="material-icons-sharp"> menu </span>
+            </button>
+
+            <div class="profile">
+                <div class="info">
+
+                    <b class="text-muted">Admin</b>
+                </div>
+                <div class="profile-photo">
+                    <img src="@Url.Content("~/img/1.png")" style="width: 100%" alt="" />
+                </div>
+            </div>
+        </div>
+
+
+        <ul class="dashboard-list">
+<li class="history-orders-item active">
+    <div class="breadcrumb-wrapper">
+        <div>
+            <h1>Tüm Siparişler</h1>
+            <p class="breadcrumbs">
+                <span><a asp-controller="Admin" asp-action="index" class="primary breadcrumb-dashboard-btn">Gösterge Paneli</a></span>
+                <span>></span>
+                <span>Siparişler</span>
+            </p>
+        </div>
+
+    </div>
+    <div class="wrapper">
+        <div class="history-orders-wrapper">
+            <div class="history-orders">
+                <table class="history-orders-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Kullanıcı</th>
+                            <th>E-Posta</th>
+                            <th>Price</th>
+                            <th>Durum</th>
+                            <th>Tarih</th>
+                            <th>Aksiyon</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Orders as List<OrderUserViewModel>)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.Username</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Price TL</td>
+                                        <td>@item.Situation</td>
+                                        <td>@item.Date.ToShortDateString()</td>
+                                        <td><a class="btn orders-details-btn" asp-controller="Admin" asp-action="OrderDetails" asp-route-billId="@item.BillId">Detay</a></td>
+                                    </tr>
+                                }
+                        
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</li>
+</ul>
+
+
+        </div>
+    

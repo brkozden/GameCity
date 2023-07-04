@@ -1,0 +1,52 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<section class="account-page register-page">
+    <div class="container">
+        <h2 style="text-align:center">@TempData["ConfirmPassword"]</h2>
+        <h2 style="text-align:center">@TempData["Error"]</h2>
+        <h2 style="text-align:center">@TempData["Password"]</h2>
+        <h2 style="text-align:center">@TempData["AlreadyExistEmail"]</h2>
+        <h2 style="text-align:center">@TempData["AlreadyExistUsername"]</h2>
+        <div class="account-wrapper register-wrapper">
+            <div class="box" style="height: 575px">
+
+        <form autocomplete="off" id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Üye Ol</h2>
+
+            <div class="inputBox">
+                <input type="text" asp-for="Input.UserName" required="required" />
+                <span>Kullanıcı Adı</span>
+                <i></i>
+            </div>
+
+            <div class="inputBox">
+                <input asp-for="Input.Email" type="email" required="required" />
+                <span>E-Posta</span>
+                <i></i>
+            </div>
+
+            <div class="inputBox">
+                <input asp-for="Input.Password" type="password" required="required" />
+                <span>Şifre</span>
+                <i></i>
+            </div>
+
+            <div class="inputBox">
+                <input asp-for="Input.ConfirmPassword" type="password" required="required" />
+                <span>Şifre Tekrar</span>
+                <i></i>
+            </div>
+            
+            <button style="margin-top: 60px" id="registerSubmit" >Kaydol</button>
+        </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+

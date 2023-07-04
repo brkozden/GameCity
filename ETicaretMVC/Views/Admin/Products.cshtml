@@ -1,0 +1,118 @@
+﻿@using ETicaretMVC.ViewModels;
+@{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+    <aside id="side-menu">
+        <div class="top">
+            <div class="logo">
+                <a asp-controller="Home" asp-action="Index">
+                <h2>GAME<span class="danger">CITY</span></h2>
+                </a>
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp"> close </span>
+            </div>
+        </div>
+        <div class="sidebar">
+            <a asp-controller="Admin" asp-action="index"  id="dashboard-main-btn">
+                <span class="material-icons-sharp"> grid_view </span>
+                <h3>Gösterge Paneli</h3>
+            </a>
+
+        <a asp-controller="Admin" asp-action="OrdersAdmin" id="ordersBtn">
+                <span class="material-icons-sharp"> receipt_long </span>
+                <h3>Siparişler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="Products" class="active" id="allProductBtn">
+                <span class="material-icons-sharp"> inventory </span>
+                <h3>Ürünler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="ProductAdd" id="addProductBtn">
+                <span class="material-icons-sharp"> add </span>
+                <h3>Ürün Ekle</h3>
+            </a>
+            <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <span class="material-icons-sharp"> logout </span>
+                <h3>Çıkış Yap</h3>
+            </a>
+        </div>
+    </aside>
+    <!--  ASIDE END -->
+    <div class="right">
+        <div class="topbar">
+            <button id="menu-btn">
+                <span class="material-icons-sharp"> menu </span>
+            </button>
+
+            <div class="profile">
+                <div class="info">
+
+                    <b class="text-muted">Admin</b>
+                </div>
+                <div class="profile-photo">
+                    <img src="@Url.Content("~/img/1.png")" style="width: 100%" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <ul class="dashboard-list">
+<li class="all-product-item active">
+    <div class="breadcrumb-wrapper">
+        <div>
+            <h1>Tüm Ürünler</h1>
+            <p class="breadcrumbs">
+                <span><a asp-controller="Admin" asp-action="index" class="primary breadcrumb-dashboard-btn">Gösterge Paneli</a></span>
+                <span>></span>
+                <span>Ürünler</span>
+            </p>
+        </div>
+        <div>
+            <a class="btn" id="allPrd_addPrd" asp-controller="Admin" asp-action="ProductAdd">Ürün Ekle</a>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="all-Products">
+            <div class="responsive-all-products">
+                <table class="all-Products-table">
+                    <thead>
+                        <tr>
+                            <th>Ürün</th>
+                            <th>Adı</th>
+                            <th>Fiyat</th>
+                            <th>Stok</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in ViewBag.Products as List<ProductViewModel>)
+                                {
+                                    <tr>
+                                        <td><img src="@Url.Content("~/img/" +item.ImagePath)" alt=""></td>
+                                        <td>@item.Name.Substring(0,20)...</td>
+                                        <th>@item.Price TL</th>
+                                        <th>@item.Stock</th>
+                                        <th>
+                                            <a asp-controller="Admin" asp-action="RemoveProduct" asp-route-productId="@item.Id" class="delete">
+                                                <span class="material-symbols-sharp">
+                                                    delete
+                                                </span>
+                                            </a>
+                                        </th>
+                                    </tr>
+                                }
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</li>
+</ul>
+        </div>
+    

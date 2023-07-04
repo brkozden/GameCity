@@ -1,0 +1,101 @@
+﻿@using ETicaretMVC.ViewModels;
+@{
+    ViewData["Title"] = "index";
+    Layout = "~/Views/Shared/_productDetailsLayout.cshtml";
+}
+@model CommentViewModel
+
+
+<section class="product-details">
+    <div class="container">
+        <div class="product-wrapper">
+            <div class="tab-panel">
+                <div class="tab-alt-panel tab-panel-reviews">
+                    <div class="review-form-wrapper">
+                        <h2>Yorum Yap</h2>
+                        <form class="comment-form" asp-controller="ProductDetails" asp-action="NewComment">
+                            <p class="comment-notes">
+                                E-posta hesabınız yayımlanmayacak. Gerekli alanlar
+                                <span class="required">*</span> ile işaretlendi
+                            </p>
+                            <div class="comment-form-rating">
+                      <label>Değerlendir <span class="required">*</span></label>
+                      <div class="rating">
+                        
+                          @foreach (var item in ViewBag.Star as List<int>)
+                                    {
+                                        if (item == 1)
+                                        {
+                                            <input asp-for="StarCount" value="@item"
+                                           class="star star-@item"
+                                           id="star-@item"
+                                           type="radio" 
+                                           checked
+                                           />
+                                            <label class="star star-@item" for="star-@item"></label>
+                                        }
+                                        else
+                                        {
+                                          <input asp-for="StarCount" value="@item"
+                                           class="star star-@item"
+                                           id="star-@item"
+                                           type="radio"
+                                            />
+                                           <label class="star star-@item" for="star-@item"></label>  
+                                        }   
+                                    }
+                      </div>
+                    </div>
+                            <div class="comment-form-comment form-comment">
+                                <label for="comment">Yorum <span class="required">*</span></label>
+                                <textarea id="comment" asp-for="UserComment" cols="50" rows="10"></textarea>
+                            </div>
+                            <div class="comment-form-author form-comment">
+                                <label for="author">İsim <span class="required">*</span></label>
+                                <input id="author" asp-for="UserName" type="text" />
+                            </div>
+                            <div class="comment-form-email form-comment">
+                                <label for="email">E-Posta <span class="required">*</span></label>
+                                <input id="email" asp-for="UserEmail" type="email" />
+                            </div>
+                            <div class="form-submit">
+                                <button type="submit" class="btn btn-primary submit" >Yorumu Paylaş </button>
+                            </div>
+                        </form>
+                    </div>
+                    <h3 style="margin-top:50px;">Bütün Yorumlar</h3>
+                    <div class="comments">
+                        <ol class="comment-list">
+
+                            @foreach (var item in ViewBag.OldComments as List<CommentViewModel>)
+                            {
+
+                                <li class="comment-item">
+                                    <div class="comment-avatar">
+                                        <img src="@Url.Content("~/img/avatar/2.png")" alt="" />
+                                    </div>
+                                    <div class="comment-text">
+                                        <ul class="comment-star">
+                                            @for (int i = 0; i < item.StarCount; i++)
+                                            {
+                                                <li><i class="bi bi-star-fill"></i></li>
+                                            }
+                                        </ul>
+                                        <div class="comment-meta">
+                                            <strong>@item.UserName</strong>
+                                            <span> - </span>
+                                            <time>@item.Created.ToShortDateString() </time>
+                                        </div>
+                                        <div class="comment-description">
+                                            <p>@item.UserComment</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

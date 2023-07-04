@@ -1,0 +1,119 @@
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+/*! categories start  */
+.categories {
+  margin: 40px 0;
+}
+
+.categories .category-list {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/*! categories end  */
+/* Product-start */
+
+.products {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Product-end */
+
+/* Campaign start */
+.campaigns .campaigns-wrapper {
+  display: flex;
+  margin: 30px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+/* Campaign end */
+
+/* Brands start */
+.brands {
+  margin: 40px 0;
+}
+.brand-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.brand-list .brand-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dee0ea;
+  opacity: 0.6;
+  transition: 0.2s ease all;
+  margin: 5px;
+}
+.brand-list .brand-item a {
+  height: auto;
+  width: 100px;
+  padding: 10px;
+}
+.brand-list .brand-item img {
+  width: 100%;
+}
+.brand-list .brand-item:hover {
+  opacity: 1;
+}
+
+/* Brands end */
+/* Policy start*/
+.policy {
+  border: 1px solid #dee0ea;
+  margin-top: 40px;
+}
+.policy .policy-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 0;
+  flex-wrap: wrap;
+}
+.policy .policy-list .policy-item {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.policy .policy-item i {
+  font-size: 50px;
+  display: flex;
+}
+.policy .policy-item .policy-texts {
+  display: flex;
+  flex-direction: column;
+}
+.policy .policy-item .policy-texts strong {
+  font-weight: 600;
+}
+.policy .policy-item .policy-texts span {
+  font-size: 12px;
+}
+/* Policy end */
+
+/* Responsive start */
+@media (max-width: 768px) {
+  .policy .policy-list {
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .policy .policy-item .policy-texts {
+    margin-left: 10px;
+  }
+}
+/* Responsive end */

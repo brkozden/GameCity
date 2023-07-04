@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ETicaretMVC.Areas.Identity.Data
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+        <a id="manage" class="header-accounts" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+            <i class="bi bi-person"></i>
+        </a>
+}
+else
+{
+    <a id="register" asp-area="Identity" asp-page="/Account/Login" class="header-accounts">
+    <i class="bi bi-person"></i>
+    </a>
+}
+

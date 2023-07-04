@@ -1,0 +1,208 @@
+﻿@page
+@model ETicaretMVC.Areas.Identity.Pages.Account.Manage.OrdersModel
+@using ETicaretMVC.ViewModels;
+
+@{
+    ViewData["Title"] = "Orders";
+    ViewData["ActivePage"] = ManageNavPages.Orders;
+    Layout = "~/Views/Shared/_accountDetailsLayout.cshtml";
+}
+
+<section class="account-dashboard-area">
+    <div class="container">
+        <div class="account-dashboard-wrapper">
+            <div class="dashboard-author">
+                <div class="media">
+                    <div class="thumbnail">
+                        <img src=@Url.Content("~/img/avatar/2.png") alt="author-name" />
+                    </div>
+                    <div class="media-body">
+                        <h5 class="title">@TempData["Username"]</h5>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-xl-3 col-md-4">
+                        <aside class="aside-dashboard">
+                            <nav class="dashboard-nav">
+                                <div class="nav tab-list" role="tablist">
+                                    <a class="nav-item nav_link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index"
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-th-large"></i>Panel
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.OrdersNavClass(ViewContext)" asp-page="./Orders" active
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-shopping-basket"></i>Siparişlerim
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.MyAddressNavClass(ViewContext)" asp-page="./MyAddress"
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-home"></i>Adresim
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.AccountInfosNavClass(ViewContext)" asp-page="/Account/Manage/AccountInfos"
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-user"></i>Hesap Bilgileri
+                                    </a>
+
+
+                                    <a class="nav-item nav_link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <i class="fas fa-sign-out"></i>Çıkış
+                                    </a>
+                                </div>
+                            </nav>
+                        </aside>
+                    </div>
+                    <div class="col-xl-9 col-md-8">
+                        <div class="tab-content" style="margin-left: 40px">
+                            <div class="tab-pane fade active" id="nav-orders" role="tabpanel">
+                                <div class="dashboard-order">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Sipariş</th>
+                                                    <th scope="col">Tarih</th>
+                                                    <th scope="col">Durum</th>
+                                                    <th scope="col">Toplam</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in TempData["Orders"] as List<OrderUserViewModel>)
+                                                {
+                                                    <tr>
+                                                    <th scope="row">@item.Id</th>
+                                                    <td>@item.Date.ToShortDateString()</td>
+                                                    <td>@item.Situation</td>
+                                                    <td>@item.Price TL</td>
+
+                                                </tr>
+                                                }
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@{
+    var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
+    @if (consentFeature?.CanTrack ?? true)
+    {
+        @if (Model.Is2faEnabled)
+        {
+            if (Model.RecoveryCodesLeft == 0)
+            {
+                <div class="alert alert-danger">
+                    <strong>You have no recovery codes left.</strong>
+                    <p>You must <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a> before you can log in with a recovery code.</p>
+                </div>
+            }
+            else if (Model.RecoveryCodesLeft == 1)
+            {
+                <div class="alert alert-danger">
+                    <strong>You have 1 recovery code left.</strong>
+                    <p>You can <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+                </div>
+            }
+            else if (Model.RecoveryCodesLeft <= 3)
+            {
+                <div class="alert alert-warning">
+                    <strong>You have @Model.RecoveryCodesLeft recovery codes left.</strong>
+                    <p>You should <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+                </div>
+            }
+
+            if (Model.IsMachineRemembered)
+            {
+                <form method="post" style="display: inline-block">
+                    <button type="submit" class="btn btn-primary">Forget this browser</button>
+                </form>
+            }
+            <a asp-page="./Disable2fa" class="btn btn-primary">Disable 2FA</a>
+            <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">Reset recovery codes</a>
+        }
+
+        <h4>Authenticator app</h4>
+        @if (!Model.HasAuthenticator)
+        {
+            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Add authenticator app</a>
+        }
+        else
+        {
+            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Set up authenticator app</a>
+            <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">Reset authenticator app</a>
+        }
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <strong>Privacy and cookie policy have not been accepted.</strong>
+            <p>You must accept the policy before you can enable two factor authentication.</p>
+        </div>
+    }
+}*@
+

@@ -1,0 +1,41 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<section class="account-page">
+    <div class="container">
+        <h2 style="text-align:center">@TempData["DoesntExist"]</h2>
+        <div class="account-wrapper">
+            <div class="box">
+            <form id="account" method="post" autocomplete="off">
+
+                <h2>Giriş Yap</h2>
+
+                <div class="inputBox">
+                    <input asp-for="Input.Email" type="text" required="required" />   @*BURDA ASLINDA USERNAME KONTROLÜ YAPIYOR EMAİL DEĞİL*@
+                    <span>Kullanıcı Adı</span>
+                    <i></i>
+                </div>
+
+                <div class="inputBox">
+                    <input asp-for="Input.Password" type="password"  required="required" />
+                    <span>Şifre</span>
+                    <i></i>
+                </div>
+
+                <div class="links">
+                    <a id="forgot-password" asp-page="./ForgotPassword">Şifreni mi unuttun?</a>
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Kayıt Ol</a>
+                </div>
+
+                <button id="login-submit">Giriş Yap</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
+

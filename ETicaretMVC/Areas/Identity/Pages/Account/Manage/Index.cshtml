@@ -1,0 +1,96 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+    Layout = "~/Views/Shared/_accountDetailsLayout.cshtml";
+}
+
+<section class="account-dashboard-area">
+    <div class="container">
+        <div class="account-dashboard-wrapper">
+            <div class="dashboard-author">
+                <div class="media">
+                    <div class="thumbnail">
+                        <img src=@Url.Content("~/img/avatar/2.png") alt="author-name" />
+                    </div>
+                    <div class="media-body">
+                        <h5 class="title">@TempData["Username"]</h5>
+                    </div>
+                </div>
+                <div class="row">
+
+
+
+                    <div class="col-xl-3 col-md-4">
+                        <aside class="aside-dashboard">
+                            <nav class="dashboard-nav">
+                                <div class="nav tab-list" role="tablist">
+                                    <a class="nav-item nav_link @ManageNavPages.IndexNavClass(ViewContext)" asp-page="./Index" active
+                                       data-bs-toggle="tab"
+                                       id="dashboard-btn"
+                                       role="tab"
+                                       aria-selected="true">
+                                        <i class="fas fa-th-large"></i>Panel
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.OrdersNavClass(ViewContext)" asp-page="./Orders"
+                                       data-bs-toggle="tab"
+                                       
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-shopping-basket"></i>Siparişlerim
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.MyAddressNavClass(ViewContext)" asp-page="./MyAddress" 
+                                       data-bs-toggle="tab"
+                                       
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-home"></i>Adresim
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.AccountInfosNavClass(ViewContext)" asp-page="/Account/Manage/AccountInfos"
+                                       data-bs-toggle="tab"
+                                       
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-user"></i>Hesap Bilgileri
+                                    </a>
+
+                                    
+                                        <a class="nav-item nav_link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                            <i class="fas fa-sign-out"></i>Çıkış
+                                        </a>
+                                </div>
+                            </nav>
+                        </aside>
+                    </div>
+                    <div class="col-xl-9 col-md-8">
+                        <div class="tab-content" style="margin-left: 40px">
+
+<div class="tab-pane fade active"
+     id="nav-dashboard"
+     role="tabpanel">
+    <div class="dashboard-overview">
+        <div class="welcome-text">
+            Selam @TempData["Username"] (<strong>@TempData["Username"]</strong> değil misin?
+
+                                            <a class="nav-item nav_link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                            <i class="fas fa-sign-out"></i>Çıkış Yap)
+                                        </a>
+                                    
+        </div>
+        <p>
+            Hesap kontrol panelinizden son siparişlerinizi
+            görüntüleyebilir, sevkiyat ve fatura adreslerinizi
+            yönetebilir ve şifrenizi ve hesap ayrıntılarınızı
+            düzenleyebilirsiniz.
+        </p>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

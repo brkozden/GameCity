@@ -1,0 +1,20 @@
+.product-details .breadcrumb ul {
+  display: flex;
+}
+.product-details .breadcrumb ul li {
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 500;
+}
+.product-details .breadcrumb ul li.active {
+  color: #8c71db;
+}
+.product-details .breadcrumb ul li:not(:last-child):after {
+  content: "/";
+  color: #a5c9ca;
+  margin: 0 5px;
+}
+.product-details .breadcrumb ul li a:hover {
+  color: #000;
+  text-decoration: underline;
+}

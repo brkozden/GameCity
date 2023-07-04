@@ -1,0 +1,178 @@
+﻿@using ETicaretMVC.ViewModels;
+@{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+    <aside id="side-menu">
+        <div class="top">
+            <div class="logo">
+                <a asp-controller="Home" asp-action="Index">
+                <h2>GAME<span class="danger">CITY</span></h2>
+                </a>
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp"> close </span>
+            </div>
+        </div>
+        <div class="sidebar">
+            <a asp-controller="Admin" asp-action="index" class="active" id="dashboard-main-btn">
+                <span class="material-icons-sharp"> grid_view </span>
+                <h3>Gösterge Paneli</h3>
+            </a>
+
+        <a asp-controller="Admin" asp-action="OrdersAdmin" id="ordersBtn">
+                <span class="material-icons-sharp"> receipt_long </span>
+                <h3>Siparişler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="Products" id="allProductBtn">
+                <span class="material-icons-sharp"> inventory </span>
+                <h3>Ürünler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="ProductAdd" id="addProductBtn">
+                <span class="material-icons-sharp"> add </span>
+                <h3>Ürün Ekle</h3>
+            </a>
+            <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <span class="material-icons-sharp"> logout </span>
+                <h3>Çıkış Yap</h3>
+            </a>
+        </div>
+    </aside>
+    <!--  ASIDE END -->
+    <div class="right">
+        <div class="topbar">
+            <button id="menu-btn">
+                <span class="material-icons-sharp"> menu </span>
+            </button>
+
+            <div class="profile">
+                <div class="info">
+
+                    <b class="text-muted">Admin</b>
+                </div>
+                <div class="profile-photo">
+                    <img src="@Url.Content("~/img/1.png")" style="width: 100%" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <ul class="dashboard-list">
+              <li class="main-dashboard-item active">
+                <main id="dashboard-left">
+                  <h1>Gösterge Paneli</h1>
+                  <div class="date">
+                    <input type="date" id="dashboard-date"  />
+                  </div>
+
+                  <div class="recent-orders">
+                    <h2>Son Siparişler</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Ürün Adı</th>
+                          <th>Ürün Numarası</th>
+                          <th>Ödeme</th>
+                          <th>Durum</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                            @foreach (var item in ViewBag.MappedOrders as List<OrderViewModel>)
+                                    {
+                                    <tr>
+                                        <td>@item.ProductName.Substring(0,15)</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Price TL</td>
+                                        <td class="warning">@item.Situation</td>
+                                        <td class="primary"><a asp-controller="Admin" asp-action="OrderDetails" asp-route-billId="@item.BillId"> Detay</a></td>
+                                      </tr>
+                                    }
+                          
+                        
+                      </tbody>
+                    </table>
+                    <a asp-controller="Admin" asp-action="OrdersAdmin" id="dash_allOrders">Hepsini Gör</a>
+                  </div>
+                </main>
+                <div id="dashboard-right">
+                  <div class="sales-analytics">
+                    <h2>Analizler</h2>
+                    <div class="insights">
+                      <div class="income">
+                        <span class="material-icons-sharp">
+                          stacked_line_chart
+                        </span>
+                        <div class="middle">
+                          <div class="left">
+                            <h3>Toplam Gelir</h3>
+                            <h1>@ViewBag.TotalEarn TL</h1>
+                          </div>
+                          <div class="progress">
+                            <svg>
+                              <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                              <p>71%</p>
+                            </div>
+                          </div>
+                        </div>
+                            <small class="text-muted">Son 24 Saat</small>
+                      </div>
+                    </div>
+                    <div class="item waiting_orders">
+                      <div class="icon">
+                        <span class="material-icons-sharp"> shopping_cart </span>
+                      </div>
+                      <div class="right">
+                        <div class="info">
+                          <h3>Bekleyen Siparişler</h3>
+                          <small class="text-muted">Son 24 Saatte</small>
+                        </div>
+                      </div>
+
+                      <h3 class="danger">@ViewBag.WaitingOrders</h3>
+                    </div>
+                    <div class="item completed_orders">
+                      <div class="icon">
+                        <span class="material-icons-sharp"> local_mall </span>
+                      </div>
+                      <div class="right">
+                        <div class="info">
+                          <h3>Tamamlanan Siparişler</h3>
+                          <small class="text-muted">Son 24 Saatte</small>
+                        </div>
+                      </div>
+
+                      <h3 class="success">@ViewBag.CompletedOrders</h3>
+                    </div>
+                    <div class="item customers">
+                      <div class="icon">
+                        <span class="material-icons-sharp"> person </span>
+                      </div>
+                      <div class="right">
+                        <div class="info">
+                          <h3>Kullanıcı Sayısı</h3>
+                          
+                        </div>
+                      </div>
+
+                      <h3 class="success">@ViewBag.UserCount</h3>
+                    </div>
+
+                    <div class="item add_product">
+                        <a asp-controller="Admin" asp-action="ProductAdd">
+                      <div> 
+                        <span class="material-icons-sharp"> add </span>
+                        <h3>Yeni Ürün Ekle</h3>
+                      </div>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+        </ul>
+    </div>

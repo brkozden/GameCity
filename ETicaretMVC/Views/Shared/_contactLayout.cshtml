@@ -1,0 +1,421 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>İletişim | GameCity</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="@Url.Content("~/css/main.css")" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div class="global-notification">
+        <div class="container">
+          <p>
+            Hafta içi Saat 16:00'a kadar ödemesi onaylanan siparişlerde aynı gün
+            kargo.
+
+                    <a asp-controller="Home" asp-action="Shop" asp-route-page="1">Alışverişe Git</a>
+          </p>
+        </div>
+      </div>
+      <div class="header-row">
+        <div class="container">
+          <div class="header-wrapper">
+            <div class="header-mobile">
+              <i class="bi bi-list" id="btn-mobile-menu"></i>
+            </div>
+            <div class="header-logo">
+              <a asp-controller="Home" asp-action="index" class="logo">GameCity</a>
+            </div>
+            <div class="header-nav" id="sidebar">
+              <nav class="navigation">
+                <ul class="menu-list">
+                  <li class="menu-list-item">
+                    <a asp-controller="Home" asp-action="index" class="menu-link active">Anasayfa </a>
+                  </li>
+                  <li class="menu-list-item megamenu-wrapper">
+                    <a asp-controller="Home" asp-action="Shop" class="menu-link" class="menu-link"
+                      >Ürünler
+                      <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <div class="menu-dropdown-wrapper">
+                      <div class="menu-dropdown-megamenu">
+                                            <div class="megamenu-links">
+                                                <div class="megamenu-products">
+                                                    <h3 class="megamenu-products-title"><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="1">Bilgisayar</a></h3>
+                                                    <ul class="megamenu-menu-list">
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="1">Dizüstü Bilgisayar</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="2">Masaüstü Bilgisayar</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="3">All-in-One Bilgisayar</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="megamenu-products">
+                                                    <h3 class="megamenu-products-title">
+                                                        <a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="2">
+                                                            Bilgisayar Bileşenleri
+                                                        </a>
+                                                    </h3>
+                                                    <ul class="megamenu-menu-list">
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="4">Anakart</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="5">İşlemci</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="6">Ekran Kartı</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="7">Ram</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="8">SSD</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="9">Hard Disk</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="10">Kasa</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="11">Güç Kaynağı (PSU)</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="12">Soğutucular</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="megamenu-products">
+                                                    <h3 class="megamenu-products-title">
+                                                        <a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="3">
+                                                            Çevre Birimleri
+                                                        </a>
+                                                    </h3>
+                                                    <ul class="megamenu-menu-list">
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="13">Monitör</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="14">Klavye</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="15">Klavye - Mouse Set</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="16">Kulaklık</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="17">Mouse</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="18">Mikrofon</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="19">Web Kamera</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="20">Aksesuarlar</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="megamenu-products">
+                                                    <h3 class="megamenu-products-title">
+                                                        <a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="4">
+                                                            Yazılım Ürünleri
+                                                        </a>
+                                                    </h3>
+                                                    <ul class="megamenu-menu-list">
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="21">Office Yazılımları</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="22">İşletim Sistemleri</a></li>
+                                                        <li><a asp-controller="Home" asp-action="Categories" asp-route-page="1" asp-route-category="23">Antivirüs ve Güvenlik</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="megamenu-single">
+                                                <a asp-controller="ProductDetails" asp-action="index" asp-route-id="1205">
+                                                    <img src="@Url.Content("~/img/megamenu_4090_img.jpg")" alt="" />
+                                                </a>
+                                                <div class="megamenu-single-text">
+                                                    <h3 class="megamenu-single-title">
+                                                        GeForce RTX 4090 HIZLININ ÖTESİNDE
+                                                    </h3>
+                                                    <p class="megamenu-single-subtitle">
+                                                        NVIDIA® GeForce RTX™ 4090, en üst düzey GeForce
+                                                        GPU'dur. Performans, verimlilik ve yapay zeka
+                                                        destekli grafiklerde büyük bir atılım sağlar.
+                                                        Ultra yüksek performanslı oyun deneyiminin,
+                                                        inanılmaz ayrıntılı sanal dünyaların, eşi benzeri
+                                                        görülmemiş üretkenliğin ve yeni tasarım
+                                                        yöntemlerinin keyfini çıkarın. NVIDIA Ada Lovelace
+                                                        mimarisi ile güçlendirilmiştir ve oyuncular ile
+                                                        içerik oluşturuculara en üst düzey deneyimi
+                                                        sunacak 24 GB G6X belleğe sahiptir.
+                                                    </p>
+                                                    <a asp-controller="ProductDetails" asp-action="index" asp-route-id="1205"
+                                                       class="megamenu-single-button btn btn-sm btn-primary">Şimdi Satın Al</a>
+                                                </div>
+                                            </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="menu-list-item">
+                    <a asp-controller="Contact" asp-action="index" class="menu-link">İLETİŞİM </a>
+                  </li>
+                </ul>
+              </nav>
+              <i class="bi-x-circle" id="close-sidebar"></i>
+            </div>
+
+            <div class="header-links">
+              <a class="search-button">
+                <i class="bi bi-search"></i>
+              </a>
+                        <partial name="_favoritesPartial"></partial>
+                        <partial name="_LoginPartial"></partial>
+
+              <div class="header-card">
+                            <partial name="_basketPartial"></partial>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="modal-search">
+      <div class="modal-wrapper">
+        <h3 class="modal-title">Ara</h3>
+        <p class="modal-text">
+          Aradığınız ürünleri görmek için yazmaya başlayın.
+        </p>
+            <form class="search-form input-group" method="post" asp-controller="Home" asp-action="SearchTextDirector">
+                @using (Html.BeginForm())
+                {
+                    <input type="text" placeholder="Ürün Ara" name="searchText" />
+                    <button>
+                        <i class="bi bi-search"></i>
+                    </button>
+                }
+            </form>
+        <div class="search-result">
+          <div class="search-heading">
+            <h3>ARAMA SONUÇLARI</h3>
+          </div>
+          <div class="results">
+            <a href="#" class="result-item">
+              <img
+                src="img/products/product1/1.jpg"
+                class="search-thumb"
+                alt=""
+              />
+              <div class="search-info">
+                <h4>
+                  Intel Core i9 13900KS 6.0GHz 36MB Önbellek 24 Çekirdek 1700
+                  10nm İşlemci
+                </h4>
+                <span class="search-sku">Stokta</span>
+                <span class="search-price">17.249,00 ₺</span>
+              </div>
+            </a>
+            <a href="#" class="result-item">
+              <img
+                src="img/products/product1/2.jpg"
+                class="search-thumb"
+                alt=""
+              />
+              <div class="search-info">
+                <h4>
+                  Intel Core i9 13900KS 6.0GHz 36MB Önbellek 24 Çekirdek 1700
+                  10nm İşlemci
+                </h4>
+                <span class="search-sku">Stokta</span>
+                <span class="search-price">17.249,00 ₺</span>
+              </div>
+            </a>
+            <a href="#" class="result-item">
+              <img
+                src="img/products/product1/3.jpg"
+                class="search-thumb"
+                alt=""
+              />
+              <div class="search-info">
+                <h4>
+                  Intel Core i9 13900KS 6.0GHz 36MB Önbellek 24 Çekirdek 1700
+                  10nm İşlemci
+                </h4>
+                <span class="search-sku">Stokta</span>
+                <span class="search-price">17.249,00 ₺</span>
+              </div>
+            </a>
+            <a href="#" class="result-item">
+              <img
+                src="img/products/product1/4.jpg"
+                class="search-thumb"
+                alt=""
+              />
+              <div class="search-info">
+                <h4>
+                  Intel Core i9 13900KS 6.0GHz 36MB Önbellek 24 Çekirdek 1700
+                  10nm İşlemci
+                </h4>
+                <span class="search-sku">Stokta</span>
+                <span class="search-price">17.249,00 ₺</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <i class="bi bi-x-circle" id="close-search"></i>
+      </div>
+    </div>
+
+    <section class="contact">
+      <div class="contact-top">
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12024.014276841059!2d29.007356234759598!3d41.11261311864336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab5bf15c34913%3A0x19571e96a2eaf2f6!2zTWFzbGFrLCBTYXLEsXllci_EsHN0YW5idWw!5e0!3m2!1str!2str!4v1677015729858!5m2!1str!2str"
+            width="100%"
+            height="500"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      
+    </section>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <section class="policy">
+      <div class="container">
+        <ul class="policy-list">
+          <li class="policy-item">
+            <i class="bi bi-truck"></i>
+            <div class="policy-texts">
+              <strong>ÜCRETSİZ KARGO</strong>
+              <span>300 TL ve üzeri alışverişlerde geçerlidir.</span>
+            </div>
+          </li>
+          <li class="policy-item">
+            <i class="bi bi-arrow-clockwise"></i>
+            <div class="policy-texts">
+              <strong>İADE GARANTİSİ</strong>
+              <span>14 Gün içerisinde İade garantisi.</span>
+            </div>
+          </li>
+          <li class="policy-item">
+            <i class="fa-solid fa-dolly"></i>
+            <div class="policy-texts">
+              <strong>KARGOYA TESLİMAT</strong>
+              <span>3 iş günü içerisinde kargoya teslimat.</span>
+            </div>
+          </li>
+          <li class="policy-item">
+            <i class="bi bi-headset"></i>
+            <div class="policy-texts">
+              <strong>TEKNİK DESTEK</strong>
+              <span>7/24 destek.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="subcribe-row">
+        <div class="container">
+          <div class="footer-subscribe-wrapper">
+            <div class="subscribe-text">
+              <i class="bi bi-envelope-open"></i>
+              <p>
+                <strong>E-Bültenimize Üye Olun!</strong> Kampanyalardan ilk
+                sizin haberiniz olsun.
+              </p>
+            </div>
+
+                    <div class="subscribe-input">
+                        <form method="post" asp-controller="Home" asp-action="Email">
+                            @using (Html.BeginForm())
+                            {
+                                <input type="email" name="email" placeholder="E-Posta Adresinizi Giriniz." />
+                                <button class="btn btn-primary">Kayıt Ol</button>
+                            }
+                        </form>
+                    </div>
+                </div>
+          <div class="footer-subscribe-contact">
+            <i class="bi bi-telephone"></i>
+            <strong>0(555) 555 5555</strong>
+            <p>
+              Çağrı Merkezimize hafta içi her gün sabah 9:00 ila akşam 18:00
+              arası ulaşabilirsiniz.
+            </p>
+          </div>
+          <div class="footer-contact-wrapper"></div>
+        </div>
+      </div>
+      <div class="widgets-row">
+        <div class="container">
+          <div class="footer-widgets">
+            <div class="brand-info">
+              <div class="footer-logo">
+                <a asp-controller="Home" asp-action="index" class="logo">GameCity</a>
+              </div>
+              <div class="footer-contact">
+                <h3>Sorunuz mu var?</h3>
+                <p>Hemen Bizimle İletişime Geçin</p>
+                <a href="tel: 555 555 5555">(+90) 555 555 5555</a>
+                <a href="mailto:gamecity@gmail.com">gamecity@gmail.com</a>
+              </div>
+              <div class="footer-desc">
+                <p>Bizi Sosyal Medyadan Takip Edin!</p>
+              </div>
+
+              <div class="footer-social">
+                <ul class="social-list">
+                  <li class="social-item">
+                    <a href="#"
+                      ><i class="fa-brands fa-instagram instagram"></i
+                    ></a>
+                  </li>
+                  <li class="social-item">
+                    <a href="#"
+                      ><i class="fa-brands fa-whatsapp whatsapp"></i
+                    ></a>
+                  </li>
+                  <li class="social-item">
+                    <a href="#"><i class="fa-brands fa-twitter twitter"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+                    <div class="widget-nav-menu">
+                        <h4>Politikalarımız</h4>
+                        <ul class="menu-list">
+                            <li>Ücretsiz Kargo</li>
+                            <li>İade Garantisi</li>
+                            <li>Kargo Teslimatı</li>
+                            <li>Teknik Destek</li>
+                        </ul>
+                    </div>
+            <div class="widget-nav-menu">
+              <h4>Hesap İşlemleri</h4>
+              <ul class="menu-list">
+                            <partial name="_footerAccountOperationsPartial"></partial>
+              </ul>
+            </div>
+
+            <div class="widget-nav-menu">
+              <h4>Kategoriler</h4>
+                        <ul class="menu-list">
+                            <li><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="1">Bilgisayar</a></li>
+                            <li><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="2">Bilgisayar Bileşenleri</a></li>
+                            <li><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="3">Çevre Birimleri</a></li>
+                            <li><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="4">Yazılım Ürünleri</a></li>
+                        </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-row">
+        <div class="container">
+          <div class="copyright-wrapper">
+            <div class="footer-copyright">
+              <div class="site-copyright">
+                <p>
+                  Gamecity Bilgisayar Elektronik ve Sanal Mağazacılık ©Copyright
+                  2023 Her Hakkı Saklıdır.
+                </p>
+              </div>
+              <img src="img/copyright/cards.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="@Url.Content("~/js/header.js")"></script> 
+  </body>
+</html>

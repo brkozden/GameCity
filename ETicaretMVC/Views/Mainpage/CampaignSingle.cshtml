@@ -1,0 +1,259 @@
+﻿@{
+    ViewData["Title"] = "CampaignSingle";
+    Layout = "~/Views/Shared/_searchLayout.cshtml";
+}
+
+@using ETicaretMVC.ViewModels;
+@model List<SearchViewModel>
+<script>
+    function setClipboard(value) {
+        var tempInput = document.createElement("input");
+        tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+        tempInput.value = value;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+    }
+</script>
+
+<section class="main-shop">
+    <div class="main-shop-wrapper">
+        <div class="container">
+            <div class="center">
+                <div class="breadcrumb-left">
+                    <div class="inner">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="shop-area-left">
+                    <div class="shop-sidebar">
+                        <div class="d-sm-none">
+                            <form asp-controller="Home" asp-action="FilterForCampaigns" asp-route-sortBy="@ViewBag.SortBy" >
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="toggle-list product-categories product-alignment"
+                                     id="alignmentMenu">
+                                        <h3 class="title">Sıralama</h3>
+                                        <div class="shop-submenu">
+                                            <ul class="list-alignment">
+                                                <li class="filters-sub-item">
+                                                    <label for="sub_newPrdct" class="sub">
+                                                        <input type="radio"
+                                                           name="sortBy" value="1"
+                                                           id="sub_newPrdct" />
+
+                                                        Yeni Eklenenler
+                                                    </label>
+                                                </li>
+                                                <li class="filters-sub-item">
+                                                    <label for="sub_bestSellers" class="sub">
+                                                        <input type="radio"
+                                                           name="sortBy" value="2"
+                                                           id="sub_bestSellers" />
+
+                                                        Çok Satanlar
+                                                    </label>
+                                                </li>
+                                                <li class="filters-sub-item">
+                                                    <label for="sub_incPrice" class="sub">
+                                                        <input type="radio"
+                                                           name="sortBy" value="3"
+                                                           id="sub_incPrice" />
+
+                                                        Fiyata göre artan
+                                                    </label>
+                                                </li>
+                                                <li class="filters-sub-item">
+                                                    <label for="sub_decPrice" class="sub">
+                                                        <input type="radio"
+                                                           name="sortBy" value="4"
+                                                           id="sub_decPrice" />
+
+                                                        Fiyata Göre Azalan
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-secondary" style="width: 100%">
+                                        Uygula
+                                    </button>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-area-right" style="margin-top:80px">
+
+                    <div class="product__row">
+                        <div class="products">
+                            <div class="products__center">
+                                <ul class="shop__products">
+
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <li class="product-item">
+                                            <div class="product-image">
+                                                <a asp-controller="ProductDetails" asp-action="index" asp-route-id="@item.Id">
+                                                    <img style="width:257px; height:257px;" src="@Url.Content("~/img/" +(item.ImagePath).ToString())"
+                                                     alt=""
+                                                     class="img1" />
+                                                     <img style="width:257px; height:257px;" src="@Url.Content("~/img/" +(item.ImagePath2).ToString())"
+                                                                         class="img2"
+                                                                         alt="" />
+                                                </a>
+                                            </div>
+                                            <div class="product-info">
+                                                <a asp-controller="ProductDetails" asp-action="index" asp-route-id="@item.Id" class="product-title">
+                                                    @item.Name
+                                                </a>
+                                                <ul class="product-star">
+                                                    <li>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </li>
+                                                    <li>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </li>
+                                                    <li>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </li>
+                                                    <li>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </li>
+                                                    <li>
+                                                        <i class="bi bi-star-half"></i>
+                                                    </li>
+                                                </ul>
+                                                <div class="product-prices">
+                                                    <strong class="new-price">@item.Price ₺</strong>
+                                                    <s class="old-price">@(item.Price + (item.Price/5)) ₺</s>
+                                                </div>
+                                                <span class="product-discount">-17%</span>
+                                                <div class="product-links">
+                                                    <form asp-controller="ProductDetails" asp-action="AddToBasket" asp-route-productId="@item.Id" asp-route-amount="1" asp-route-page="@ViewBag.Page" asp-route-which="8" >
+                                                        <button><i class="bi bi-basket-fill"></i></button>
+                                                    </form>
+
+                                                    <form asp-controller="ProductDetails" asp-action="AddToFavorites" asp-route-productId="@item.Id" asp-route-amount="1" asp-route-page="@ViewBag.Page" asp-route-which="8" >
+                                                        <button><i class="bi bi-heart-fill"></i></button>
+                                                    </form>
+                                                    <form asp-controller="ProductDetails" asp-action="index" asp-route-id="@item.Id">
+                                                        <button><i class="bi bi-eye-fill"></i></button>
+                                                    </form>
+                                                    <button onclick="setClipboard('https://localhost:7186/ProductDetails/Index/@item.Id')"><i class="bi bi-share-fill"></i></button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <nav data-pagination>
+                        @{
+                            if (ViewBag.Page == 1)
+                            {
+                                <a class="pagination-back disabled">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="pagination-back" asp-controller="Mainpage" asp-action="CampaignSingle" asp-route-page="@(ViewBag.Page-1)" asp-route-sortBy="@ViewBag.SortBy">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </a>
+                            }
+                        }
+
+                        <ul class="pagination-number-list">
+                            @{
+                                if (ViewBag.PageCount == 1 || ViewBag.PageCount == 0)
+                                {
+                                    <li class="current disabled"><a href="#1">1</a></li>
+                                }
+                                if (ViewBag.PageCount <= 9 && ViewBag.PageCount != 1 && ViewBag.PageCount != 0)
+                                {
+                                    for (int i = 1; i <= ViewBag.PageCount; i++)
+                                    {
+
+                                        if (i == ViewBag.Page)
+                                        {
+                                            <li class="current disabled"><a>@ViewBag.Page</a></li>
+                                            continue;
+                                        }
+                                        <li><a asp-controller="Mainpage" asp-action="CampaignSingle" asp-route-page="@i" asp-route-sortBy="@ViewBag.SortBy">@i</a></li>
+                                    }
+                                }
+                                if (ViewBag.PageCount > 9 && ViewBag.PageCount != 1 && ViewBag.PageCount != 0)
+                                {
+                                    if (ViewBag.Page <= 5)
+                                    {
+                                        for (int i = 1; i <= 9; i++)
+                                        {
+                                            if (ViewBag.Page == i)
+                                            {
+                                                <li><a class="current disabled">@i</a></li>
+                                                continue;
+                                            }
+                                            <li><a asp-controller="Mainpage" asp-action="CampaignSingle" asp-route-page="@i" asp-route-sortBy="@ViewBag.SortBy">@i</a></li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int i = (ViewBag.Page) - 4; i <= (ViewBag.Page) + 4; i++)
+                                        {
+                                            if (ViewBag.Page == i)
+                                            {
+                                                <li><a class="current disabled">@i</a></li>
+                                                continue;
+                                            }
+                                            if (ViewBag.Page >= (ViewBag.PageCount) - 4)
+                                            {
+                                                for (int j = 1; j <= 9; j++)
+                                                {
+                                                    if (ViewBag.Page == ViewBag.PageCount - 9 + j)
+                                                    {
+                                                        <li><a class="disabled">@(ViewBag.PageCount - 9 + j)</a></li>
+                                                        continue;
+                                                    }
+                                                    <li><a asp-controller="Mainpage" asp-action="CampaignSingle" asp-route-page="@(ViewBag.PageCount-9+j)" asp-route-sortBy="@ViewBag.SortBy">@(ViewBag.PageCount - 9 + j)</a></li>
+                                                }
+                                                break;
+                                            }
+                                            <li><a asp-controller="Mainpage" asp-action="CampaignSingle" asp-route-page="@i" asp-route-sortBy="@ViewBag.SortBy">@i</a></li>
+                                        }
+                                    }
+
+                                }
+                            }
+                        </ul>
+                        @{
+                            if (ViewBag.Page == ViewBag.PageCount || ViewBag.PageCount == 0)
+                            {
+                                <a class="pagination-next disabled">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="pagination-next" asp-controller="Mainpage" asp-action="CampaignSingle" asp-route-page="@(ViewBag.Page+1)" asp-route-sortBy="@ViewBag.SortBy">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            }
+                        }
+
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

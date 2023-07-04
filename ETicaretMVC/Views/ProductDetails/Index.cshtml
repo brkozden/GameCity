@@ -1,0 +1,199 @@
+﻿@using ETicaretMVC.ViewModels;
+@{
+    ViewData["Title"] = "index";
+    Layout = "~/Views/Shared/_productDetailsLayout.cshtml";
+}
+
+
+<section class="product-details">
+    <div class="container">
+        <div class="product-wrapper">
+            <!-- breadcrumb start -->
+            <div class="single-topbar">
+                <nav class="breadcrumb">
+                    <ul>
+                        
+                            
+                        
+                        <li><a asp-controller="Home" asp-action="index">Anasayfa</a></li>
+                        @switch (Model.GeneralCategoryId)
+                        {
+                            case 1:
+                                <li><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="1">@Model.GeneralCategoryName</a></li>
+                                ; break;
+                            case 2:
+                                <li><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="2">@Model.GeneralCategoryName</a></li>
+                                ; break;
+                            case 3:
+                                <li><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1"asp-route-generalCategory="3">@Model.GeneralCategoryName</a></li>
+                                ; break;
+                            case 4:
+                                <li><a asp-controller="Mainpage" asp-action="GeneralCategory" asp-route-page="1" asp-route-generalCategory="4">@Model.GeneralCategoryName</a></li>
+                                ; break;
+                                default: break; 
+                        }
+                        <li><a asp-controller="Home" asp-action="Categories" asp-route-category="@Model.CategoryId" asp-route-page="1">@Model.CategoryName</a></li>
+                        <li class="active">@Model.BrandName @Model.CategoryName</li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Breadcrumb end -->
+            <!-- Site main start -->
+            <div class="single-content">
+                <main class="site-main">
+                    <div class="product-gallery">
+                        <div class="single-image-wrapper">
+                            <img src="@Url.Content("~/img/" +(Model.ImagePath).ToString())" alt="" />
+                        </div>
+                        <div class="product-thumb">
+                            <ol class="gallery-thumbs">
+                                <li>
+                                    <img class="img-fluid active"
+                                         src="@Url.Content("~/img/" +(Model.ImagePath).ToString())"
+                                         alt="" />
+                                </li>
+                                <li>
+                                    <img class="img-fluid"
+                                         src="@Url.Content("~/img/" +(Model.ImagePath2).ToString())"
+                                         alt="" />
+                                </li>
+                                <li>
+                                    <img class="img-fluid"
+                                         src="@Url.Content("~/img/" +(Model.ImagePath3).ToString())"
+                                         alt="" />
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h1 class="product-title">
+                            @Model.Name
+                        </h1>
+                        <a asp-controller="Mainpage" asp-action="Brands" asp-route-brand="@Model.BrandId" asp-route-page="1"><strong class="product-branch-name">@Model.BrandName</strong></a>
+                        <div class="product-review">
+                            <ul class="product-star">
+                                
+                                @{
+                                    if (ViewBag.StarCount==0)
+                                    {
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                    }
+                                    else
+                                    {
+                                                for (int i = 0; i <= ViewBag.StarCount; i++)
+                                        {
+                                            <li><i class="bi bi-star-fill"></i></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                            <span>@ViewBag.CommentCount Müşteri Değerlendirmesi</span>
+                        </div>
+                        <div class="product-price">
+                            <strong>@Model.Price</strong>
+                            @{
+                                if (Model.Stock > 0)
+                                {
+                                    <span class="product-stock">Stokta</span>
+                                }
+                                else
+                                {
+                                    <span class="product-stock">Stokta Yok</span>
+                                }
+                            }
+                        </div>
+
+                        <form method="post" asp-controller="ProductDetails" asp-action="AddToBasket" asp-route-productId="@Model.Id" asp-route-which="1">
+                        <div class="cart-button">
+                            
+                                <input type="number" value="1" min="1" name="amount"/>
+                                <button class="btn btn-primary btn-lg">Sepete Ekle</button>
+                        </div>
+                        </form>
+
+                        <a asp-controller="ProductDetails" asp-action="AddToFavorites" asp-route-productId="@Model.Id">
+                            <div class="product-extra-button">
+                                    <i class="bi bi-heart"></i><span> Favorilere Ekle</span>
+                            </div>
+                        </a>
+                        <div class="divider"></div>
+                        <div class="product-meta">
+                            <div class="product-brand">
+                                <span>Marka:</span>
+                                <strong>@Model.BrandName</strong>
+                            </div>
+                            <div class="product-categories">
+                                <span>Kategori:</span>
+                                <strong>@Model.CategoryName , @Model.GeneralCategoryName</strong>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <!-- Site main end -->
+            <!-- tabs start -->
+            <div class="single-tabs">
+                <ul class="tab-list">
+                    <li>
+                        <a class="tab-button active" href="javascript:void(0)">Teknik Özellikler</a>
+                    </li>
+                    <li>
+                        <a class="tab-button" href="javascript:void(0)">Değerlendirmeler</a>
+                    </li>
+                </ul>
+                <div class="tab-panel">
+                    <div class="tab-alt-panel tab-panel-description active">
+                        <p>
+                            @Model.Description
+                        </p>
+                    </div>
+
+                    <div class="tab-alt-panel tab-panel-reviews">
+                        <h3>Değerlendirmeler</h3>
+                        <div class="comments">
+                            <ol class="comment-list">
+
+                                @foreach (var comment in ViewBag.Comments as List<CommentViewModel>)
+                                {
+                                    if (Model.Id == comment.ProductId)
+                                    {
+                                        <li class="comment-item">
+                                            <div class="comment-avatar">
+                                                <img src="@Url.Content("~/img/avatar/2.png")" alt="" />
+                                            </div>
+                                            <div class="comment-text">
+                                                <ul class="comment-star">
+                                                    @for (int i = 0; i < comment.StarCount; i++)
+                                                    {
+                                                        <li><i class="bi bi-star-fill"></i></li>
+                                                    }
+                                                </ul>
+                                                <div class="comment-meta">
+                                                    <strong>@comment.UserName</strong>
+                                                    <span> - </span>
+                                                    <time>@comment.Created.ToShortDateString() </time>
+                                                </div>
+                                                <div class="comment-description">
+                                                    <p>@comment.UserComment</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+
+                            </ol>
+                            <a class="btn btn-primary" style="margin-top:30px;" asp-controller="ProductDetails" asp-action="NewComment" asp-route-id="@Model.Id">Yorum Yap</a>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+            <!-- tabs end -->
+        </div>
+    </div>
+</section>

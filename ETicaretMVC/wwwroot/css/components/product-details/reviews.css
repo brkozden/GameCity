@@ -1,0 +1,167 @@
+/* Comment item start */
+.tab-panel-reviews .comment-avatar {
+    width: 60px;
+}
+
+.tab-panel-reviews .comment-item {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.tab-panel-reviews .comment-avatar img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+}
+
+.tab-panel-reviews .comment-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+}
+
+.tab-panel-reviews .comment-star {
+    display: flex;
+}
+
+.tab-panel-reviews .comment-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.tab-panel-reviews .comment-star i {
+    color: gold;
+    font-size: 12px;
+}
+
+.tab-panel-reviews .comment-meta {
+    font-size: 14px;
+}
+
+.tab-panel-reviews .comment-description p {
+    font-size: 16px;
+}
+
+/* Comment item end */
+/* Comment form start */
+.tab-panel-reviews span.required {
+    color: #e51414;
+}
+
+.tab-panel-reviews .review-form-wrapper h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 20px 0;
+    border-bottom: 2px solid black;
+    padding-bottom: 16px;
+}
+
+.tab-panel-reviews .comment-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.tab-panel-reviews .comment-notes {
+    font-size: 14px;
+}
+
+.review-form-wrapper .form-submit {
+    margin-top: 2rem;
+}
+
+.review-form-wrapper .form-comment {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    row-gap: 4px;
+    margin-bottom: 6px;
+}
+
+.comment-form .comment-form-author {
+    margin: 10px 0;
+}
+/* Comment form end */
+
+/* Star  */
+
+.comment-form-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    margin: 1.4rem 0;
+}
+
+.rating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    transform: rotateY(180deg);
+}
+
+input.star {
+    display: none;
+}
+
+label.star {
+    float: right;
+    font-size: 24px;
+    color: #444;
+    transition: all 0.2s;
+}
+
+input.star:checked ~ label.star:before {
+    content: "\f005";
+    color: gold;
+    transition: all 0.25s;
+}
+
+input.star-5:checked ~ label.star:before {
+    color: gold;
+}
+
+input.star-1:checked ~ label.star:before {
+    color: gold;
+}
+
+label.star:hover {
+    transform: rotate(-15deg) scale(1.3);
+}
+
+label.star:before {
+    content: "\f006";
+    font-family: FontAwesome;
+}
+
+.rev-box {
+    overflow: hidden;
+    height: 0;
+    width: 100%;
+    transition: all 0.25s;
+}
+
+textarea.review {
+    background: #222;
+    border: none;
+    width: 100%;
+    max-width: 100%;
+    height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #eee;
+}
+
+label.review {
+    display: block;
+    transition: opacity 0.25s;
+}
+
+input.star:checked ~ .rev-box {
+    height: 125px;
+    overflow: visible;
+}
+/* Star end ---------------------------------------------------------------------- */

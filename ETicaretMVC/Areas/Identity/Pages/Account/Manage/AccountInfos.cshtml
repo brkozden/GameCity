@@ -1,0 +1,123 @@
+﻿@page
+@model AccountInfosModel
+@{
+    ViewData["Title"] = "Change password";
+    Layout = "~/Views/Shared/_accountDetailsLayout.cshtml";
+}
+
+<h2 style="text-align:center;">@TempData["ConfirmationError"]</h2>
+<h2 style="text-align:center;">@TempData["WrongPassword"]</h2> 
+<h2 style="text-align:center;">@TempData["Success"]</h2>
+<h2 style="text-align:center;">@TempData["ChangedName"]</h2>
+<h2 style="text-align:center;">@TempData["ChangedSurname"]</h2>
+<h2 style="text-align:center;">@TempData["ChangedNameSurname"]</h2>
+<h2 style="text-align:center;">@TempData["PasswordError"]</h2>
+
+<section class="account-dashboard-area">
+    <div class="container">
+        <div class="account-dashboard-wrapper">
+            <div class="dashboard-author">
+                <div class="media">
+                    <div class="thumbnail">
+                        <img src=@Url.Content("~/img/avatar/2.png") alt="author-name" />
+                    </div>
+                    <div class="media-body">
+                        <h5 class="title">@TempData["Username"]</h5>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-xl-3 col-md-4">
+                        <aside class="aside-dashboard">
+                            <nav class="dashboard-nav">
+                                <div class="nav tab-list" role="tablist">
+                                    <a class="nav-item nav_link @ManageNavPages.IndexNavClass(ViewContext)" asp-page="./Index"
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-th-large"></i>Panel
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.OrdersNavClass(ViewContext)" asp-page="./Orders"
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-shopping-basket"></i>Siparişlerim
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.MyAddressNavClass(ViewContext)" asp-page="./MyAddress"
+                                       data-bs-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false">
+                                        <i class="fas fa-home"></i>Adresim
+                                    </a>
+                                    <a class="nav-item nav_link @ManageNavPages.AccountInfosNavClass(ViewContext)" asp-page="/Account/Manage/AccountInfos" active
+                                       data-bs-toggle="tab"
+                                       id="dashboard-btn"
+                                       role="tab"
+                                       aria-selected="true">
+                                        <i class="fas fa-user"></i>Hesap Bilgileri
+                                    </a>
+
+
+                                    <a class="nav-item nav_link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <i class="fas fa-sign-out"></i>Çıkış
+                                    </a>
+                                </div>
+                            </nav>
+                        </aside>
+                    </div>
+                    <div class="col-xl-9 col-md-8">
+                        <div class="tab-content" style="margin-left: 40px">
+
+                            <div class="tab-pane fade show active"
+                                 id="nav-account"
+                                 role="tabpanel">
+                                <div class="col-lg-9">
+                                    <div class="dashboard-account">
+                                        <form action="" class="account-details-form" method="post">
+                                            <div class="row">
+
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="">Adınız</label>
+                                                                <input type="text" asp-for="Input.Name" placeholder="@TempData["Name"]" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="">Soyadınız</label>
+                                                                <input type="text" asp-for="Input.Surname" placeholder="@TempData["Surname"]" class="form-control" />
+                                                            </div>
+                                                        </div>
+
+                                                <div class="col-12">
+                                                    <h5 class="title">Şifre Değiştir</h5>
+                                                    <div class="form-group">
+                                                        <label for="">Eski Şifreniz</label>
+                                                        <input type="password" asp-for="Input.OldPassword" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Yeni Şifreniz</label>
+                                                        <input type="password" asp-for="Input.NewPassword" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">Yeni Şifreniz (Tekrar)</label>
+                                                        <input type="password" asp-for="Input.ConfirmPassword" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="submit"
+                                                               class="btn btn-primary"
+                                                               value="Kaydet" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

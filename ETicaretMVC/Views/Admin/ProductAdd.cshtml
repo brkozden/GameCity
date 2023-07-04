@@ -1,0 +1,195 @@
+﻿@using ETicaretMVC.ViewModels;
+@{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+@model ProductViewModel
+
+    <aside id="side-menu">
+        <div class="top">
+            <div class="logo">
+            <a asp-controller="Home" asp-action="Index">
+                <h2>GAME<span class="danger">CITY</span></h2>
+            </a>
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp"> close </span>
+            </div>
+        </div>
+        <div class="sidebar">
+            <a asp-controller="Admin" asp-action="index"  id="dashboard-main-btn">
+                <span class="material-icons-sharp"> grid_view </span>
+                <h3>Gösterge Paneli</h3>
+            </a>
+
+        <a asp-controller="Admin" asp-action="OrdersAdmin" id="ordersBtn">
+                <span class="material-icons-sharp"> receipt_long </span>
+                <h3>Siparişler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="Products" id="allProductBtn">
+                <span class="material-icons-sharp"> inventory </span>
+                <h3>Ürünler</h3>
+            </a>
+
+            <a asp-controller="Admin" asp-action="ProductAdd" class="active" id="addProductBtn">
+                <span class="material-icons-sharp"> add </span>
+                <h3>Ürün Ekle</h3>
+            </a>
+            <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <span class="material-icons-sharp"> logout </span>
+                <h3>Çıkış Yap</h3>
+            </a>
+        </div>
+    </aside>
+    <!--  ASIDE END -->
+    <div class="right">
+        <div class="topbar">
+            <button id="menu-btn">
+                <span class="material-icons-sharp"> menu </span>
+            </button>
+
+            <div class="profile">
+                <div class="info">
+
+                    <b class="text-muted">Admin</b>
+                </div>
+                <div class="profile-photo">
+                    <img src="@Url.Content("~/img/1.png")" style="width: 100%" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <ul class="dashboard-list">
+
+<li class="add-product-item active">
+    <div class="breadcrumb-wrapper">
+        <div>
+            <h1>Ürünler</h1>
+            <p class="breadcrumbs">
+                <span><a asp-controller="Admin" asp-action="index" class="primary breadcrumb-dashboard-btn">Gösterge Paneli</a></span>
+                <span>></span>
+                <span>Ürünler</span>
+            </p>
+        </div>
+        <div>
+            <a class="btn" id="addProduct_allPrdBtn" asp-controller="Admin" asp-action="Products"> Tüm Ürünler</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="add_product_header">
+            <h2>Ürün Ekle</h2>
+        </div>
+        <div class="add_product_body">
+            <div class="uploads">
+                <form asp-controller="Admin" asp-action="ProductAdd" method="post" enctype="multipart/form-data">
+
+                    <div class="col">
+                        <label for="productName" class="form-label">Ürün Adı</label>
+                        <input type="text" asp-for="Name" class="form-select" id="productName" required="required">
+                    </div>
+                    <div class="col">
+                        <label for="productGeneralCategoryName" class="form-label">Genel Kategori Seç</label>
+                        <select asp-for="GeneralCategoryId" id="generalCategories" class="form-select" required="required">
+                            <option value="1">Bilgisayar</option>
+                            <option value="2">Bilgisayar Bileşenleri</option>
+                            <option value="3">Çevre Bilimleri</option>
+                            <option value="4">Yazılım Ürünleri</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="productCategoryName" class="form-label">Kategori Seç</label>
+                        <select asp-for="CategoryId" id="Categories" class="form-select" required="required">
+                            <optgroup label="Bilgisayar">
+                                <option value="1">Dizüstü Bilgisayar</option>
+                                <option value="2">Masaüstü Bilgisayar</option>
+                                <option value="3">All-in-One Bilgisayar</option>
+                            </optgroup>
+                            <optgroup label="Bilgisayar Bileşenleri">
+                                <option value="4">Anakart</option>
+                                <option value="5">İşlemci</option>
+                                <option value="6">Ekran Kartı</option>
+                                <option value="7">Ram</option>
+                                <option value="8">SSD</option>
+                                <option value="9">Hard Disk</option>
+                                <option value="10">Kasa</option>
+                                <option value="11">Güç Kaynağı</option>
+                                <option value="12">Soğutucular</option>
+                            </optgroup>
+                            <optgroup label="Çevre Bileşenleri">
+                                <option value="13">Monitör</option>
+                                <option value="14">Klavye</option>
+                                <option value="15">Klavye - Mouse Set</option>
+                                <option value="16">Kulaklık</option>
+                                <option value="17">Mouse</option>
+                                <option value="18">Mikrofon</option>
+                                <option value="19">Web Kamera</option>
+                                <option value="20">Aksesuarlar</option>
+
+                            </optgroup>
+                            <optgroup label="Yazılım Ürünleri">
+                                <option value="21">Office Yazılımları</option>
+                                <option value="22">İşletim Sistemleri</option>
+                                <option value="23">Antivirüs ve Güvenlik</option>
+
+
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="product-branch">Ürün Markası</label>
+                        <input type="number" asp-for="BrandId" class="form-select" id="product-branch" required="required">
+                    </div>
+                    <div class="col">
+                        <label for="productPrice" class="form-label">Ürün Fiyatı</label>
+                        <input type="number" asp-for="Price" class="form-select" id="productPrice" min="0" required="required">
+                    </div>
+
+                    <div class="col">
+                        <label for="productStock" class="form-label">Ürün Stoğu</label>
+                        <input type="number" asp-for="Stock" class="form-select" id="productStock" min="0" required="required">
+                    </div>
+                    <div class="col">
+                        <label for="productGeneralCategoryName" class="form-label">Genel Kategori Seç</label>
+                        <select asp-for="Color" id="generalCategories" class="form-select" required="required">
+                            <option value="Siyah">Siyah</option>
+                            <option value="Gri">Gri</option>
+                            <option value="Beyaz">Beyaz</option>
+                            <option value="Mavi">Mavi</option>
+                            <option value="Mor">Mor</option>
+                            <option value="Kırmızı">Kırmızı</option>
+                            <option value="Sarı">Sarı</option>
+                            <option value="Yeşil">Yeşil</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="productDetails" class="form-label">Ürün Açıklaması</label>
+                        <textarea class="form-select" asp-for="Description" id="productDetails" rows="10" required="required"></textarea>
+                    </div>
+                    <div class="col">
+                        <div class="upload-image-buttons">
+                            <label for="formFile">1.Ürün Fotoğrafını Yükle</label>
+                            <input type="file" asp-for="Image" id="formFile" multiple required="required"/>
+                        </div>
+                        <div class="upload-image-buttons">
+                            <label for="formFile2">2.Ürün Fotoğrafını Yükle</label>
+                            <input type="file" asp-for="Image2" id="formFile2" multiple />
+                        </div>
+                        <div class="upload-image-buttons">
+                            <label for="formFile3">3.Ürün Fotoğrafını Yükle</label>
+                            <input type="file" asp-for="Image3" id="formFile3" multiple />
+                        </div>
+                        <div class="submit-button">
+                            <button type="submit" class="btn">
+                                Ürün Ekle
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+</li>
+        </ul>
+    </div>
